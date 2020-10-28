@@ -11,15 +11,10 @@ function startPrompts() {
   var confirmLowercase = confirm('Would you like your password to include lowercase characters?');
   var confirmUppercase = confirm('Would you like your password to include uppercase characters?');
   var confirmSpecialChar = confirm('Would you like your password to include special characters (such as @#$%!)');
+  var confirmLength = prompt('How many characters would you like your password to be?');
 }
 
 generateBtn.addEventListener("click", startPrompts);
-
-// if (confirmLowercase) {
-//   for (var i = 0; i < lowercaseArray.length; i++) {
-
-//   }
-// }
 
 // Write password to the #password input
 function writePassword() {
