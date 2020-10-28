@@ -7,10 +7,10 @@ var specialCharArray = ['!', '"', '#', '$', '%', '&', '(', ')', '*', '+', ',', '
 var numbersArray = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
 
 
-var confirmLowercase = prompt('Would you like your password to include lowercase characters?');
-var confirmUppercase = prompt('Would you like your password to include uppercase characters?');
-var confirmSpecialChar = prompt('Would you like your password to include special characters (such as @#$%!)')
-var confirmNumbers = prompt('Would you like your password to include numbers?')
+var confirmLowercase = confirm('Would you like your password to include lowercase characters?');
+var confirmUppercase = confirm('Would you like your password to include uppercase characters?');
+var confirmSpecialChar = confirm('Would you like your password to include special characters (such as @#$%!)')
+var confirmNumbers = confirm('Would you like your password to include numbers?')
 
 
 
