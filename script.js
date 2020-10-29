@@ -7,6 +7,7 @@ var uppercaseArray = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L"
 var specialCharArray = ['!', '"', '#', '$', '%', '&', '(', ')', '*', '+', ',', '-', '.', '/','\\', ':', ';', '<', '=', '>', '?', '@', '[', '\'', ']','^', '_', '`', '{', '|', '}', '~'];
 var selected = [];
 
+// when user presses generate password button, the prompts will start
 function startPrompts() {
   var confirmNumbers = confirm('Would you like your password to include numbers?');
   var confirmLowercase = confirm('Would you like your password to include lowercase characters?');
@@ -14,6 +15,8 @@ function startPrompts() {
   var confirmSpecialChar = confirm('Would you like your password to include special characters (such as @#$%!)');
   var confirmLength = prompt('How many characters would you like your password to be?');
   
+// if the user clicks ok on the confirm, the corresponding array is pushed to 'selected' array
+
   if (confirmNumbers !== null) {
     selected.push(numbersArray);
   }
@@ -29,8 +32,20 @@ function startPrompts() {
   if (confirmSpecialChar !== null) {
     selected.push(specialCharArray);
   }
+  if (confirmLength < 8) {
+    alert('Please choose a password length of at least 8 characters.');
+    //  figure out a way to get the variable to reset and reask the question
+  }
+  
+  if (confirmLength > 8) {
+    alert('Please choose a password length with no more than 128 characters.');
+  //  figure out a way to get the variable to reset and reask the question
+  } 
 }
 
+// function passwordLength('') {
+//     var length = confirmLength;
+// }
 
 generateBtn.addEventListener("click", startPrompts);
 
