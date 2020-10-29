@@ -54,14 +54,16 @@ function generatePassword(confirmLength){
     location.reload();
   
     } else {
-        for (var i = 0; i = confirmLength; i++) {
+        for (var i = 0; i = confirmLength; i++) { 
+          // ^^ CREATES AN INFINTE LOOP :O
         var randomValues = Math.floor(Math.random() * selected.length);
         randomValuesArray.push(randomValues);
+        console.log(randomValues);
         }
       }
   }
 
-console.log(randomValuesArray);
+
 generateBtn.addEventListener("click", startPrompts);
 
 
