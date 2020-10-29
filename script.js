@@ -17,35 +17,47 @@ function startPrompts() {
   
 // if the user clicks ok on the confirm, the corresponding array is pushed to 'selected' array
 
-  if (confirmNumbers !== null) {
+  if (confirmNumbers !== false) {
     selected.push(numbersArray);
   }
   
-  if (confirmLowercase !== null) {
+  if (confirmLowercase !== false) {
     selected.push(lowercaseArray);
   }
   
-  if (confirmUppercase !== null) {
+  if (confirmUppercase !== false) {
     selected.push(uppercaseArray);
   }
   
-  if (confirmSpecialChar !== null) {
+  if (confirmSpecialChar !== false) {
     selected.push(specialCharArray);
   }
+
   if (confirmLength < 8) {
-    alert('Please choose a password length of at least 8 characters.');
-    //  figure out a way to get the variable to reset and reask the question
+    alert('Please choose a password length of at least 8 characters. Click \'generate password\' again!');
+    location.reload();
   }
   
-  if (confirmLength > 8) {
-    alert('Please choose a password length with no more than 128 characters.');
-  //  figure out a way to get the variable to reset and reask the question
+  if (confirmLength > 128) {
+    alert('Please enter a password length with no more than 128 characters. Click \'generate password\' again!');
+    location.reload();
   } 
+  
+  if (confirmNumbers === false && confirmLowercase === false && confirmUppercase === false && confirmSpecialChar === false) {
+    alert('Please choose at least one character set for your password. Click \'generate password\' again!');
+    location.reload();
+  }
 }
 
-// function passwordLength('') {
-//     var length = confirmLength;
-// }
+function pullSelected(){
+  for (var i = 0; i < selected.length; i++) {
+    var randomIndeces = selected[Math.floor(Math.random() * confirmLength)];
+    return randomIndeces;
+    console.log(randomIndeces);
+  }
+}
+
+console.log(selected);
 
 generateBtn.addEventListener("click", startPrompts);
 
@@ -57,9 +69,9 @@ generateBtn.addEventListener("click", startPrompts);
 
 
 // // Write password to the #password input
-// // function writePassword() {
-// //   var password = generatePassword();
-// //   var passwordText = document.querySelector("#password");
+// function writePassword() {
+//   var password = generatePassword();
+//   var passwordText = document.querySelector("#password");
 
 
 
