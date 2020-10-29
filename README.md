@@ -1,6 +1,12 @@
 # passwordgenerator
 
-This page will, upon clicking the "Generate Password" button, generate a password for the user based on responses to a series of questions concerning the password's character type and length. The user will be asked whether they would like their password to include lowercase and uppercase letters, special characters, and numbers in addition to the length they would like their password to be (in terms of character number). The user will have to choose a password with a character length of at least 8 and it may not exceed 128 charaters. The user's desired password characteristics will be placed into the textarea for their use. 
+This page will, upon clicking the "Generate Password" button, generate a password for the user based on responses to a series of questions concerning the password's character type and length. The user will be asked whether they would like their password to include lowercase and uppercase letters, special characters, and numbers in addition to the length they would like their password to be (in terms of character number). The user will have to choose a password with a character length of at least 8 and it may not exceed 128 charaters. The user's desired password characteristics will be placed into the textarea for their use. The following is what the user will view upon navigating to the website:
+
+
+
+
+You can find the website here:
+https://jesscru.github.io/password-generator/
 
 
 WHEN I click the button to generate a password
@@ -32,6 +38,7 @@ THEN the password is either displayed in an alert or written to the page
 <!-- DONE set global character values -->
 <!-- DONE make prompts for each value -->
 <!-- to include the array values in the password: (when user says yes i.e. if statement) inside an if statement, put a loop. if user says yes, loop through the appropriate array and randomly choose values from it.  
+    When user says yes -> push the appropriate array to a previously empty array that will be used to draw the password characters from 
     Could randomly select an index value and then return that value to a varaible??-->
 <!-- store the values of each of the loops(array values) to a variable -->
 <!-- need to add an additional if statement for the confirmlength prompt to set limits for characters max/min -->
