@@ -6,6 +6,7 @@ var lowercaseArray = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l"
 var uppercaseArray = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
 var specialCharArray = ['!', '"', '#', '$', '%', '&', '(', ')', '*', '+', ',', '-', '.', '/','\\', ':', ';', '<', '=', '>', '?', '@', '[', '\'', ']','^', '_', '`', '{', '|', '}', '~'];
 var selected = [];
+var randomValuesArray = [];
 
 // when user presses generate password button, the prompts will start
 function startPrompts() {
@@ -16,6 +17,11 @@ function startPrompts() {
   var confirmLength = prompt('How many characters would you like your password to be?');
   
 // if the user clicks ok on the confirm, the corresponding array is pushed to 'selected' array
+
+  if (confirmNumbers === false && confirmLowercase === false && confirmUppercase === false && confirmSpecialChar === false) {
+    alert('Please choose at least one character set for your password. Click \'generate password\' again!');
+    location.reload();
+  }
 
   if (confirmNumbers !== false) {
     selected.push(numbersArray);
@@ -33,6 +39,11 @@ function startPrompts() {
     selected.push(specialCharArray);
   }
 
+    generatePassword(confirmLength);
+  }   
+
+
+function generatePassword(confirmLength){
   if (confirmLength < 8) {
     alert('Please choose a password length of at least 8 characters. Click \'generate password\' again!');
     location.reload();
@@ -41,38 +52,23 @@ function startPrompts() {
   if (confirmLength > 128) {
     alert('Please enter a password length with no more than 128 characters. Click \'generate password\' again!');
     location.reload();
-  } 
   
-  if (confirmNumbers === false && confirmLowercase === false && confirmUppercase === false && confirmSpecialChar === false) {
-    alert('Please choose at least one character set for your password. Click \'generate password\' again!');
-    location.reload();
+    } else {
+        for (var i = 0; i = confirmLength; i++) {
+        var randomValues = Math.floor(Math.random() * selected.length);
+        randomValuesArray.push(randomValues);
+        }
+      }
   }
-}
 
-function pullSelected(){
-  for (var i = 0; i < selected.length; i++) {
-    var randomIndeces = selected[Math.floor(Math.random() * confirmLength)];
-    return randomIndeces;
-    console.log(randomIndeces);
-  }
-}
-
-console.log(selected);
-
+console.log(randomValuesArray);
 generateBtn.addEventListener("click", startPrompts);
-
-
-
-
-
-
 
 
 // // Write password to the #password input
 // function writePassword() {
-//   var password = generatePassword();
+//   var password = generatePassword(toBePrinted);
 //   var passwordText = document.querySelector("#password");
-
 
 
 
