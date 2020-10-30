@@ -8,6 +8,7 @@ var specialCharArray = ['!', '"', '#', '$', '%', '&', '(', ')', '*', '+', ',', '
 var selected = [];
 var randomValuesArray = [];
 
+
 // when user presses generate password button, the prompts will start
 function startPrompts() {
   var confirmNumbers = confirm('Would you like your password to include numbers?');
@@ -24,59 +25,62 @@ function startPrompts() {
   }
 
   if (confirmNumbers !== false) {
-    selected.push(numbersArray);
+    selected.concat(numbersArray);
+    
   }
   
   if (confirmLowercase !== false) {
-    selected.push(lowercaseArray);
+    selected.concat(lowercaseArray);
   }
   
   if (confirmUppercase !== false) {
-    selected.push(uppercaseArray);
+    selected.concat(uppercaseArray);
   }
   
   if (confirmSpecialChar !== false) {
-    selected.push(specialCharArray);
+    selected.concat(specialCharArray);
+    
   }
 
-    generatePassword(confirmLength);
+    // generatePassword(confirmLength);
+    console.log(selected);
   }   
 
 
-function generatePassword(confirmLength){
-  if (confirmLength < 8) {
-    alert('Please choose a password length of at least 8 characters. Click \'generate password\' again!');
-    location.reload();
-  }
+// function generatePassword(confirmLength){
+//   if (confirmLength < 8) {
+//     alert('Please choose a password length of at least 8 characters. Click \'generate password\' again!');
+//     location.reload();
+//   }
   
-  if (confirmLength > 128) {
-    alert('Please enter a password length with no more than 128 characters. Click \'generate password\' again!');
-    location.reload();
+//   if (confirmLength > 128) {
+//     alert('Please enter a password length with no more than 128 characters. Click \'generate password\' again!');
+//     location.reload();
   
-    } else {
-      confirmLength = parseInt(confirmLength);
-        for (var i = 0; i < confirmLength; i++) { 
-        var randomValues = Math.floor(Math.random() * selected.length);
-        randomValuesArray.push(randomValues);
-        console.log(randomValues);
-        }
-      }
-  }
+//     } else {
+//       confirmLength = parseInt(confirmLength);
+//         for (var i = 0; i < selected.length; i++) { 
+//         var randomValues = selected[Math.floor(Math.random() * confirmLength)];
+//         randomValuesArray.push(randomValues);
+//         console.log(randomValuesArray);
+//         }
+//       }
+//   }
 
 
 generateBtn.addEventListener("click", startPrompts);
 
 
-// Write password to the #password input
-function writePassword() {
-  var password = generatePassword();
-  var passwordText = document.querySelector("#password");
+// // Write password to the #password input
+// function writePassword() {
+//   var password = generatePassword(randomValuesArray);
+//   var passwordText = document.querySelector("#password");
 
 
 
-  passwordText.value = password;
+//   passwordText.value = password;
 
-}
+// }
 
-// Add event listener to generate button
-generateBtn.addEventListener("click", writePassword);
+// // Add event listener to generate button
+// generateBtn.addEventListener("click", writePassword);
