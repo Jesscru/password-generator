@@ -9,6 +9,7 @@ var selected = [];
 var randomValuesArray = [];
 
 
+
 // when user presses generate password button, the prompts will start
 function startPrompts() {
   var confirmNumbers = confirm('Would you like your password to include numbers?');
@@ -43,7 +44,7 @@ function startPrompts() {
 
     var merged = [].concat.apply([], selected);
     generatePassword(confirmLength, merged);
-    console.log(merged);
+    // console.log(merged);
   }   
 
 
@@ -52,6 +53,9 @@ function generatePassword(confirmLength, merged){
     //   alert('Please only enter numbers.');
     //     location.reload();
     // }
+
+    confirmLength = parseInt(confirmLength);
+
     if (confirmLength < 8) {
       alert('Please choose a password length of at least 8 characters. Click \'generate password\' again!');
       location.reload();
@@ -62,16 +66,16 @@ function generatePassword(confirmLength, merged){
       location.reload();
     
     } else {
-      confirmLength = parseInt(confirmLength);
-        for (var i = 0; i < merged.length; i++) { 
-        var randomValues = merged[Math.floor(Math.random() * confirmLength)];
+        for (var i = 0; i < confirmLength; i++) { 
+          var randomValues = merged[Math.floor(Math.random() * merged.length)];
+          randomValuesArray.push(randomValues);
+          finalPassword = randomValuesArray.join('');
+        }
       }
-    }
-      randomValuesArray.push(randomValues);
-      finalPassword = randomValuesArray.join();
-      console.log(randomValues);
-      // console.log(randomValuesArray);
-      // console.log(finalPassword);
+
+    
+      console.log(finalPassword);
+      writePassword(finalPassword);
   }
 
 
@@ -85,7 +89,7 @@ function writePassword(finalPassword) {
 
 
 
-  passwordText.value = password;
+  passwordText.textContent = password;
 
 }
 
