@@ -11,11 +11,12 @@ var randomValuesArray = [];
 
 // when user presses generate password button, the prompts will start
 function startPrompts() {
+
+  var confirmLength = prompt('How many characters would you like your password to be?');
   var confirmNumbers = confirm('Would you like your password to include numbers?');
   var confirmLowercase = confirm('Would you like your password to include lowercase characters?');
   var confirmUppercase = confirm('Would you like your password to include uppercase characters?');
   var confirmSpecialChar = confirm('Would you like your password to include special characters (such as @#$%!)');
-  var confirmLength = prompt('How many characters would you like your password to be?');
   
 // if the user clicks ok on the confirm, the corresponding array is pushed to 'selected' array
 
@@ -25,62 +26,64 @@ function startPrompts() {
   }
 
   if (confirmNumbers !== false) {
-    selected.concat(numbersArray);
-    
+    numbersArray.concat(selected);
   }
   
   if (confirmLowercase !== false) {
-    selected.concat(lowercaseArray);
+    lowercaseArray.concat(selected);
   }
   
   if (confirmUppercase !== false) {
-    selected.concat(uppercaseArray);
+    uppercaseArray.concat(selected);
   }
   
   if (confirmSpecialChar !== false) {
-    selected.concat(specialCharArray);
-    
+    specialCharArray.concat(selected);
   }
 
-    // generatePassword(confirmLength);
+    generatePassword(confirmLength);
     console.log(selected);
   }   
 
 
-// function generatePassword(confirmLength){
-//   if (confirmLength < 8) {
-//     alert('Please choose a password length of at least 8 characters. Click \'generate password\' again!');
-//     location.reload();
-//   }
-  
-//   if (confirmLength > 128) {
-//     alert('Please enter a password length with no more than 128 characters. Click \'generate password\' again!');
-//     location.reload();
-  
-//     } else {
-//       confirmLength = parseInt(confirmLength);
-//         for (var i = 0; i < selected.length; i++) { 
-//         var randomValues = selected[Math.floor(Math.random() * confirmLength)];
-//         randomValuesArray.push(randomValues);
-//         console.log(randomValuesArray);
-//         }
-//       }
-//   }
+function generatePassword(confirmLength){
+    // if (confirmLength !== typeof number) {
+    //   alert('Please only enter numbers.');
+    //     location.reload();
+    // }
+    if (confirmLength < 8) {
+      alert('Please choose a password length of at least 8 characters. Click \'generate password\' again!');
+      location.reload();
+    }
+    
+    if (confirmLength > 128) {
+      alert('Please enter a password length with no more than 128 characters. Click \'generate password\' again!');
+      location.reload();
+    
+    } else {
+      confirmLength = parseInt(confirmLength);
+        for (var i = 0; i < confirmLength; i++) { 
+        var randomValues = selected[Math.floor(Math.random() * selected.length)];
+        randomValuesArray.push(randomValues);
+      }
+    }
+      finalPassword = randomValuesArray.join();
+  }
 
 
 generateBtn.addEventListener("click", startPrompts);
 
 
-// // Write password to the #password input
-// function writePassword() {
-//   var password = generatePassword(randomValuesArray);
-//   var passwordText = document.querySelector("#password");
+// Write password to the #password input
+function writePassword(finalPassword) {
+  var password = generatePassword(finalPassword);
+  var passwordText = document.querySelector("#password");
 
 
 
-//   passwordText.value = password;
+  passwordText.value = password;
 
-// }
+}
 
-// // Add event listener to generate button
-// generateBtn.addEventListener("click", writePassword);
+// Add event listener to generate button
+generateBtn.addEventListener("click", writePassword);
