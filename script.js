@@ -1,10 +1,15 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
+
 // acceptable characters (what will be allowed in future prompt responses)
+
 var numbersArray = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
 var lowercaseArray = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
 var uppercaseArray = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
 var specialCharArray = ['!', '"', '#', '$', '%', '&', '(', ')', '*', '+', ',', '-', '.', '/','\\', ':', ';', '<', '=', '>', '?', '@', '[', '\'', ']','^', '_', '`', '{', '|', '}', '~'];
+
+// arrays for values that user chooses and the random values picked from those
+
 var selected = [];
 var randomValuesArray = [];
 
@@ -44,9 +49,9 @@ function startPrompts() {
     location.reload();
   }
 
+  // concatonating all of the arrays the user selected into one merged array
     var merged = [].concat.apply([], selected);
     generatePassword(confirmLength, merged);
-    // console.log(merged);
   }   
 
 // set max and min limits to password length and choose random characters from merged array 
@@ -72,16 +77,15 @@ function generatePassword(confirmLength, merged){
           randomValuesArray.push(randomValues);
         }
       }
-      console.log(randomValuesArray);
       writePassword(randomValuesArray);
     }
-
 
 
 generateBtn.addEventListener("click", startPrompts);
 
 
 // // Write password to the #password input
+
 function writePassword(randomValuesArray) {
   var password = document.getElementById('password');
   var finalPassword = randomValuesArray.join('');
@@ -90,10 +94,11 @@ function writePassword(randomValuesArray) {
   anotherPassword(randomValuesArray);
 }
 
+// clears the stored values from the previous password if the user wants to create another one
+
 function anotherPassword(randomValuesArray) {
-  generateBtn.onclick = function(){
     randomValuesArray.length = 0;
   }
-}
+
 
 
