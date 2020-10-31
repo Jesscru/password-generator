@@ -47,16 +47,13 @@ function startPrompts() {
     // console.log(merged);
   }   
 
-
+// set max and min limits to password length and choose random characters from merged array 
 function generatePassword(confirmLength, merged){
     // if (confirmLength !== typeof number) {
     //   alert('Please only enter numbers.');
     //     location.reload();
     // }
-
-    confirmLength = parseInt(confirmLength);
-
-    if (confirmLength < 8) {
+  if (confirmLength < 8) {
       alert('Please choose a password length of at least 8 characters. Click \'generate password\' again!');
       location.reload();
     }
@@ -66,32 +63,26 @@ function generatePassword(confirmLength, merged){
       location.reload();
     
     } else {
+        confirmLength = parseInt(confirmLength);
         for (var i = 0; i < confirmLength; i++) { 
           var randomValues = merged[Math.floor(Math.random() * merged.length)];
           randomValuesArray.push(randomValues);
-          finalPassword = randomValuesArray.join('');
         }
       }
+      console.log(randomValuesArray);
+      writePassword(randomValuesArray);
+    }
 
-    
-      console.log(finalPassword);
-      writePassword(finalPassword);
-  }
 
 
 generateBtn.addEventListener("click", startPrompts);
 
 
-// Write password to the #password input
-function writePassword(finalPassword) {
-  var password = generatePassword(finalPassword);
-  var passwordText = document.querySelector("#password");
-
-
-
-  passwordText.textContent = password;
-
+// // Write password to the #password input
+function writePassword(randomValuesArray) {
+  var password = document.getElementById('password');
+  var finalPassword = randomValuesArray.join('');
+  password.textContent = finalPassword;
 }
 
-// Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
