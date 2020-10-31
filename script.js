@@ -70,6 +70,7 @@ function generatePassword(confirmLength, merged){
         }
       }
       console.log(randomValuesArray);
+      writePassword(randomValuesArray);
     }
 
 
@@ -83,3 +84,5 @@ function writePassword(randomValuesArray) {
   var finalPassword = randomValuesArray.join('');
   password.textContent = finalPassword;
 }
+
+
