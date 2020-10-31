@@ -11,6 +11,7 @@ var randomValuesArray = [];
 
 
 // when user presses generate password button, the prompts will start
+
 function startPrompts() {
   var confirmNumbers = confirm('Would you like your password to include numbers?');
   var confirmLowercase = confirm('Would you like your password to include lowercase characters?');
@@ -37,6 +38,7 @@ function startPrompts() {
   }
 
 // if the user clicks cancel on every confirm, they are instructed to choose at least one character set and the page reloads
+
   if (confirmNumbers === false && confirmLowercase === false && confirmUppercase === false && confirmSpecialChar === false) {
     alert('Please choose at least one character set for your password. Click \'generate password\' again!');
     location.reload();
@@ -48,6 +50,7 @@ function startPrompts() {
   }   
 
 // set max and min limits to password length and choose random characters from merged array 
+
 function generatePassword(confirmLength, merged){
     // if (confirmLength !== typeof number) {
     //   alert('Please only enter numbers.');
@@ -83,6 +86,14 @@ function writePassword(randomValuesArray) {
   var password = document.getElementById('password');
   var finalPassword = randomValuesArray.join('');
   password.textContent = finalPassword;
+
+  anotherPassword(randomValuesArray);
+}
+
+function anotherPassword(randomValuesArray) {
+  generateBtn.onclick = function(){
+    randomValuesArray.length = 0;
+  }
 }
 
 
