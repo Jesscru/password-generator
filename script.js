@@ -12,11 +12,11 @@ var randomValuesArray = [];
 // when user presses generate password button, the prompts will start
 function startPrompts() {
 
-  var confirmLength = prompt('How many characters would you like your password to be?');
   var confirmNumbers = confirm('Would you like your password to include numbers?');
   var confirmLowercase = confirm('Would you like your password to include lowercase characters?');
   var confirmUppercase = confirm('Would you like your password to include uppercase characters?');
   var confirmSpecialChar = confirm('Would you like your password to include special characters (such as @#$%!)');
+  var confirmLength = prompt('How many characters would you like your password to be?');
   
 // if the user clicks ok on the confirm, the corresponding array is pushed to 'selected' array
 
@@ -25,20 +25,20 @@ function startPrompts() {
     location.reload();
   }
 
-  if (confirmNumbers !== false) {
-    numbersArray.concat(selected);
+  if (confirmNumbers !== null) {
+    selected.concat(numbersArray);
   }
   
-  if (confirmLowercase !== false) {
-    lowercaseArray.concat(selected);
+  if (confirmLowercase !== null) {
+    selected.concat(lowercaseArray);
   }
   
-  if (confirmUppercase !== false) {
-    uppercaseArray.concat(selected);
+  if (confirmUppercase !== null) {
+    selected.concat(uppercaseArray);
   }
   
-  if (confirmSpecialChar !== false) {
-    specialCharArray.concat(selected);
+  if (confirmSpecialChar !== null) {
+    selected.concat(specialCharArray);
   }
 
     generatePassword(confirmLength);
