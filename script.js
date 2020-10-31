@@ -11,7 +11,6 @@ var randomValuesArray = [];
 
 // when user presses generate password button, the prompts will start
 function startPrompts() {
-
   var confirmNumbers = confirm('Would you like your password to include numbers?');
   var confirmLowercase = confirm('Would you like your password to include lowercase characters?');
   var confirmUppercase = confirm('Would you like your password to include uppercase characters?');
@@ -23,7 +22,7 @@ function startPrompts() {
   if (confirmNumbers) {
     selected.push(numbersArray);
   }
-  
+
   if (confirmLowercase) {
     selected.push(lowercaseArray);
   }
@@ -36,54 +35,59 @@ function startPrompts() {
     selected.push(specialCharArray);
   }
 
+// if the user clicks cancel on every confirm, they are instructed to choose at least one character set and the page reloads
   if (confirmNumbers === false && confirmLowercase === false && confirmUppercase === false && confirmSpecialChar === false) {
     alert('Please choose at least one character set for your password. Click \'generate password\' again!');
     location.reload();
   }
 
-    // generatePassword(confirmLength);
-    console.log(selected);
+    var merged = [].concat.apply([], selected);
+    generatePassword(confirmLength, merged);
+    console.log(merged);
   }   
 
 
-// function generatePassword(confirmLength){
-//     // if (confirmLength !== typeof number) {
-//     //   alert('Please only enter numbers.');
-//     //     location.reload();
-//     // }
-//     if (confirmLength < 8) {
-//       alert('Please choose a password length of at least 8 characters. Click \'generate password\' again!');
-//       location.reload();
-//     }
+function generatePassword(confirmLength, merged){
+    // if (confirmLength !== typeof number) {
+    //   alert('Please only enter numbers.');
+    //     location.reload();
+    // }
+    if (confirmLength < 8) {
+      alert('Please choose a password length of at least 8 characters. Click \'generate password\' again!');
+      location.reload();
+    }
     
-//     if (confirmLength > 128) {
-//       alert('Please enter a password length with no more than 128 characters. Click \'generate password\' again!');
-//       location.reload();
+    if (confirmLength > 128) {
+      alert('Please enter a password length with no more than 128 characters. Click \'generate password\' again!');
+      location.reload();
     
-//     } else {
-//       confirmLength = parseInt(confirmLength);
-//         for (var i = 0; i < confirmLength; i++) { 
-//         var randomValues = selected[Math.floor(Math.random() * selected.length)];
-//         randomValuesArray.push(randomValues);
-//       }
-//     }
-//       finalPassword = randomValuesArray.join();
-//   }
+    } else {
+      confirmLength = parseInt(confirmLength);
+        for (var i = 0; i < merged.length; i++) { 
+        var randomValues = merged[Math.floor(Math.random() * confirmLength)];
+      }
+    }
+      randomValuesArray.push(randomValues);
+      finalPassword = randomValuesArray.join();
+      console.log(randomValues);
+      // console.log(randomValuesArray);
+      // console.log(finalPassword);
+  }
 
 
 generateBtn.addEventListener("click", startPrompts);
 
 
-// // Write password to the #password input
-// function writePassword(finalPassword) {
-//   var password = generatePassword(finalPassword);
-//   var passwordText = document.querySelector("#password");
+// Write password to the #password input
+function writePassword(finalPassword) {
+  var password = generatePassword(finalPassword);
+  var passwordText = document.querySelector("#password");
 
 
 
-//   passwordText.value = password;
+  passwordText.value = password;
 
-// }
+}
 
-// // Add event listener to generate button
-// generateBtn.addEventListener("click", writePassword);
+// Add event listener to generate button
+generateBtn.addEventListener("click", writePassword);
