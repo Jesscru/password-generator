@@ -22,7 +22,7 @@ function startPrompts() {
   var confirmLowercase = confirm('Would you like your password to include lowercase characters?');
   var confirmUppercase = confirm('Would you like your password to include uppercase characters?');
   var confirmSpecialChar = confirm('Would you like your password to include special characters (such as @#$%!)');
-  var confirmLength = prompt('How many characters would you like your password to be?');
+  var confirmLength = prompt('How many characters would you like your password to be? Please only enter numbers');
   
 // if the user clicks ok on the confirm, the corresponding array is pushed to 'selected' array
 
@@ -58,11 +58,6 @@ function startPrompts() {
 
 function generatePassword(confirmLength, merged){
 
-    // if (typeof confirmLength !== 'number') {
-    //   alert('Please only enter numbers.');
-    //     location.reload();
-    // }
-
     if (confirmLength < 8) {
       alert('Please choose a password length of at least 8 characters. Click \'generate password\' again!');
       location.reload();
@@ -94,6 +89,7 @@ function writePassword(randomValuesArray) {
   password.textContent = finalPassword;
 
   anotherPassword(randomValuesArray);
+
 }
 
 // clears the stored values from the previous password if the user wants to create another one
