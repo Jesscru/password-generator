@@ -58,10 +58,10 @@ function startPrompts() {
 
 function generatePassword(confirmLength, merged){
 
-    if (typeof confirmLength !== 'number') {
-      alert('Please only enter numbers.');
-        location.reload();
-    }
+    // if (typeof confirmLength !== 'number') {
+    //   alert('Please only enter numbers.');
+    //     location.reload();
+    // }
 
     if (confirmLength < 8) {
       alert('Please choose a password length of at least 8 characters. Click \'generate password\' again!');
